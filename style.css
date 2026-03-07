@@ -1,0 +1,310 @@
+/* ==========================================================================
+   1. VARIABLES GLOBALES - Thème Clair "Effet Papier" (Inspiration Stripe)
+   ========================================================================== */
+:root {
+    /* Couleurs de base */
+    --bg-white: #ffffff;        /* Fond pur pour l'effet papier */
+    --bg-alt: #f7f9fc;          /* Fond alternatif léger pour différencier les sections */
+    
+    /* Cartes et Éléments */
+    --card-bg: #ffffff;
+    --border-color: #e6e8eb;     /* Bordure très claire pour l'effet papier */
+    
+    /* Typographie */
+    --text-main: #1A1F36;       /* Noir très foncé pour une lecture nette */
+    --text-muted: #5469D4;      /* Un bleu élégant typique de Stripe pour le texte secondaire */
+    
+    /* Accent et Code */
+    --accent: #635bff;          /* Le violet vibrant de Stripe */
+    --code-bg: #111827;         /* On garde le code en noir pour le contraste, très chic */
+    
+    /* Polices */
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'Courier New', Courier, monospace;
+}
+
+/* ==========================================================================
+   2. RÉINITIALISATION ET ARRIÈRE-PLAN
+   ========================================================================== */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+html {
+    scroll-behavior: smooth;
+    /* On garde l'aimant vertical (Scroll Snap) pour marquer les transitions */
+    scroll-snap-type: y mandatory; 
+}
+
+body {
+    background-color: var(--bg-white);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    
+    /* --- EFFET DE QUADRILLAGE DISCRET (Background Grid) --- */
+    /* Création d'un motif de grille de 20px x 20px avec des lignes fines gris clair */
+    background-image: 
+        linear-gradient(var(--border-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: center;
+}
+
+/* ==========================================================================
+   3. MISE EN PAGE ET SÉPARATION ULTRA NETTE
+   ========================================================================== */
+.section {
+    position: relative; /* INDISPENSABLE : Sert de point de repère pour dessiner la ligne */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem;
+    
+    scroll-snap-align: start; 
+    scroll-snap-stop: always; 
+    
+    /* Animation (toujours là) */
+    opacity: 0;
+    transform: translateY(15vh) scale(0.92);
+    filter: blur(8px); 
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- LA LIGNE DE SÉPARATION (Bord à Bord) --- */
+/* S'applique à toutes les sections sauf l'accueil (qui est tout en haut) */
+.section:not(#accueil)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw; /* Force la ligne à faire 100% de la largeur de l'écran */
+    height: 1px;  /* Épaisseur de la ligne */
+    background-color: var(--text-main); /* Couleur noire */
+    opacity: 0.15; /* Transparence pour que ce soit subtil */
+}
+
+/* --- LE DÉTAIL STRIPE : LA CROIX DE REPÉRAGE (+) --- */
+/* Ajoute un petit "+" technique sur le bord gauche de ton contenu */
+.section:not(#accueil)::after {
+    content: '+';
+    position: absolute;
+    top: -12px; /* Centre le "+" parfaitement sur la ligne */
+    left: 0;
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    opacity: 0.3;
+    font-size: 1.2rem;
+}
+
+/* Alternance des fonds */
+.section:nth-child(even) {
+    background-color: var(--bg-alt);
+    max-width: 100%; 
+    padding-left: calc(50% - 500px); 
+    padding-right: calc(50% - 500px);
+}
+
+.section.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+/* ==========================================================================
+   4. TYPOGRAPHIE CLAIRE
+   ========================================================================== */
+h1 { 
+    font-size: 4.5rem; 
+    font-weight: 800; /* Plus gras pour le thème clair */
+    letter-spacing: -0.05em; 
+    margin-bottom: 1rem; 
+    color: var(--text-main);
+}
+
+h2 { 
+    font-size: 2.8rem; 
+    font-weight: 700; 
+    margin-bottom: 2rem; 
+    color: var(--accent); /* Le titre de section utilise l'accent */
+}
+
+/* Effet de texte en dégradé mis à jour pour thème clair (style Stripe) */
+.text-gradient {
+    background: -webkit-linear-gradient(45deg, #635bff, #00d4ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.6rem; 
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+p { 
+    color: #4f566b; /* Gris moyen pour la lecture prolongée */
+    font-size: 1.2rem; 
+    max-width: 650px; 
+    margin-bottom: 1rem;
+}
+
+.highlight-text {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+/* ==========================================================================
+   5. COMPOSANTS "EFFET PAPIER" (Cards)
+   ========================================================================== */
+
+/* L'élément clé : box-shadow subtil qui donne l'effet papier posé */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px; /* Coins plus arrondis */
+    padding: 2rem;
+    /* Ombre subtile et diffuse style Stripe pour l'effet papier */
+    box-shadow: 0 6px 15px -3px rgba(0, 0, 0, 0.05), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Effet au survol plus prononcé */
+.card:hover {
+    border-color: #c4cdd5; /* La bordure se fonce un peu */
+    transform: translateY(-8px); /* La carte se soulève */
+    /* L'ombre devient plus forte pour accentuer le soulèvement */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Grille de la section 3 */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 2rem; /* Plus d'espace */
+    margin-top: 2rem;
+}
+
+/* Mise en page de la section 4 (Détail projet) */
+.project-detail-layout {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.project-info { 
+    flex: 1; 
+    min-width: 300px;
+}
+
+/* Design du menu déroulant mis à jour (style "competence menu déroulant" de ta maquette) */
+.custom-select {
+    background: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-family: inherit;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Design de la fenêtre de code (On garde le noir pour le contraste) */
+.code-window {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--code-bg);
+    border: 1px solid #000;
+    border-radius: 12px;
+    padding: 2rem;
+    font-family: var(--font-mono);
+    color: #e0e6ed;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Ombre plus forte ici pour le détacher */
+}
+
+
+/* ===== Window Container ===== */
+.window-container {
+    width: 400px;
+    height: 232px;
+    background-color: white;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* ===== Top Bar ===== */
+.top-bar {
+    padding: 6px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-bar-name {
+    color:white;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.top-bar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+/* ===== Action Buttons ===== */
+.action-one,
+.action-two,
+.action-three {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #888;
+}
+
+.action-one {
+    background-color: #FFFFFF;
+}
+
+.action-two {
+    background-color: #54FFCC;
+}
+
+.action-three {
+    background-color: #FF51D1;
+}
+
+/* ===== Media Content ===== */
+figure {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+img,
+video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
