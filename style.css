@@ -29,17 +29,23 @@ html {
 }
 
 body {
+    position: relative;
     background-color: var(--bg-white);
     color: var(--text-main);
     font-family: var(--font-sans);
     line-height: 1.6;
-    
-    /* Quadrillage fixe */
-    background-image: 
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
         linear-gradient(var(--border-color) 1px, transparent 1px),
         linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
     background-size: 20px 20px;
-    background-attachment: fixed; 
+    pointer-events: none;
+    z-index: -1;
 }
 
 /* ==========================================================================
@@ -55,18 +61,6 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 6rem 3rem 3rem 3rem; /* Augmentation du padding-top à 6rem pour éviter la collision */
-    
-    scroll-snap-align: start; 
-    scroll-snap-stop: always;
-    background-color: transparent !important;
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 3rem;
     
     scroll-snap-align: start; 
     scroll-snap-stop: always; 
@@ -112,7 +106,7 @@ body {
 }
 
 .section:nth-child(even) {
-    background-color: rgba(247, 249, 252, 0.4) !important;
+    background-color: rgba(247, 249, 252, 0.12) !important;
     max-width: 100%; 
     padding-left: calc(50% - 500px); 
     padding-right: calc(50% - 500px);
@@ -293,7 +287,7 @@ summary {
     padding: 16px;
     border-top: 1px solid var(--border-color);
     background-color: #fafbfc;
-    font-size: 0.8rem; /* Valeur diminuée (était à 0.9rem) */
+    font-size: 0.8rem; /* Valeur diminuee (etait a 1rem) */
 }
 
 @keyframes fadeIn {
@@ -347,4 +341,7 @@ summary {
 @media (max-width: 850px) {
     .project-grid-layout { grid-template-columns: 1fr; }
     .project-nav { display: none; }
+}
+#cat{
+    max-width: 15%;
 }
