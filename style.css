@@ -2,23 +2,14 @@
    1. VARIABLES GLOBALES - Thème Clair "Effet Papier" (Inspiration Stripe)
    ========================================================================== */
 :root {
-    /* Couleurs de base */
-    --bg-white: #ffffff;        /* Fond pur pour l'effet papier */
-    --bg-alt: #f7f9fc;          /* Fond alternatif léger pour différencier les sections */
-    
-    /* Cartes et Éléments */
+    --bg-white: #ffffff;
+    --bg-alt: #f7f9fc;
     --card-bg: #ffffff;
-    --border-color: #e6e8eb;     /* Bordure très claire pour l'effet papier */
-    
-    /* Typographie */
-    --text-main: #1A1F36;       /* Noir très foncé pour une lecture nette */
-    --text-muted: #5469D4;      /* Un bleu élégant typique de Stripe pour le texte secondaire */
-    
-    /* Accent et Code */
-    --accent: #635bff;          /* Le violet vibrant de Stripe */
-    --code-bg: #111827;         /* On garde le code en noir pour le contraste, très chic */
-    
-    /* Polices */
+    --border-color: #e6e8eb;
+    --text-main: #1A1F36;
+    --text-muted: #5469D4;
+    --accent: #635bff;
+    --code-bg: #111827;
     --font-sans: 'Inter', sans-serif;
     --font-mono: 'Courier New', Courier, monospace;
 }
@@ -34,7 +25,6 @@
 
 html {
     scroll-behavior: smooth;
-    /* On garde l'aimant vertical (Scroll Snap) pour marquer les transitions */
     scroll-snap-type: y mandatory; 
 }
 
@@ -44,20 +34,20 @@ body {
     font-family: var(--font-sans);
     line-height: 1.6;
     
-    /* --- EFFET DE QUADRILLAGE DISCRET (Background Grid) --- */
-    /* Création d'un motif de grille de 20px x 20px avec des lignes fines gris clair */
+    /* Quadrillage fixe */
     background-image: 
         linear-gradient(var(--border-color) 1px, transparent 1px),
         linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
     background-size: 20px 20px;
-    background-position: center;
+    background-attachment: fixed; 
 }
 
 /* ==========================================================================
-   3. MISE EN PAGE ET SÉPARATION ULTRA NETTE
+   3. MISE EN PAGE ET SÉPARATION
    ========================================================================== */
 .section {
-    position: relative; /* INDISPENSABLE : Sert de point de repère pour dessiner la ligne */
+    background-color: transparent !important;
+    position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -69,7 +59,7 @@ body {
     scroll-snap-align: start; 
     scroll-snap-stop: always; 
     
-    /* Animation (toujours là) */
+    /* Animation */
     opacity: 0;
     transform: translateY(15vh) scale(0.92);
     filter: blur(8px); 
@@ -78,26 +68,30 @@ body {
                 filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* --- LA LIGNE DE SÉPARATION (Bord à Bord) --- */
-/* S'applique à toutes les sections sauf l'accueil (qui est tout en haut) */
+.section.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+/* Ligne de séparation */
 .section:not(#accueil)::before {
     content: '';
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100vw; /* Force la ligne à faire 100% de la largeur de l'écran */
-    height: 1px;  /* Épaisseur de la ligne */
-    background-color: var(--text-main); /* Couleur noire */
-    opacity: 0.15; /* Transparence pour que ce soit subtil */
+    width: 100vw;
+    height: 1px;
+    background-color: var(--text-main);
+    opacity: 0.15;
 }
 
-/* --- LE DÉTAIL STRIPE : LA CROIX DE REPÉRAGE (+) --- */
-/* Ajoute un petit "+" technique sur le bord gauche de ton contenu */
+/* Croix de repérage (+) */
 .section:not(#accueil)::after {
     content: '+';
     position: absolute;
-    top: -12px; /* Centre le "+" parfaitement sur la ligne */
+    top: -12px;
     left: 0;
     color: var(--text-main);
     font-family: var(--font-mono);
@@ -105,25 +99,19 @@ body {
     font-size: 1.2rem;
 }
 
-/* Alternance des fonds */
 .section:nth-child(even) {
-    background-color: var(--bg-alt);
+    background-color: rgba(247, 249, 252, 0.4) !important;
     max-width: 100%; 
     padding-left: calc(50% - 500px); 
     padding-right: calc(50% - 500px);
 }
 
-.section.is-visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-}
 /* ==========================================================================
-   4. TYPOGRAPHIE CLAIRE
+   4. TYPOGRAPHIE
    ========================================================================== */
 h1 { 
     font-size: 4.5rem; 
-    font-weight: 800; /* Plus gras pour le thème clair */
+    font-weight: 800; 
     letter-spacing: -0.05em; 
     margin-bottom: 1rem; 
     color: var(--text-main);
@@ -133,10 +121,9 @@ h2 {
     font-size: 2.8rem; 
     font-weight: 700; 
     margin-bottom: 2rem; 
-    color: var(--accent); /* Le titre de section utilise l'accent */
+    color: var(--accent);
 }
 
-/* Effet de texte en dégradé mis à jour pour thème clair (style Stripe) */
 .text-gradient {
     background: -webkit-linear-gradient(45deg, #635bff, #00d4ff);
     -webkit-background-clip: text;
@@ -151,7 +138,7 @@ h2 {
 }
 
 p { 
-    color: #4f566b; /* Gris moyen pour la lecture prolongée */
+    color: #4f566b;
     font-size: 1.2rem; 
     max-width: 650px; 
     margin-bottom: 1rem;
@@ -165,39 +152,32 @@ p {
 }
 
 /* ==========================================================================
-   5. COMPOSANTS "EFFET PAPIER" (Cards)
+   5. COMPOSANTS
    ========================================================================== */
-
-/* L'élément clé : box-shadow subtil qui donne l'effet papier posé */
 .card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 16px; /* Coins plus arrondis */
+    border-radius: 16px;
     padding: 2rem;
-    /* Ombre subtile et diffuse style Stripe pour l'effet papier */
     box-shadow: 0 6px 15px -3px rgba(0, 0, 0, 0.05), 
                 0 4px 6px -2px rgba(0, 0, 0, 0.03);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Effet au survol plus prononcé */
 .card:hover {
-    border-color: #c4cdd5; /* La bordure se fonce un peu */
-    transform: translateY(-8px); /* La carte se soulève */
-    /* L'ombre devient plus forte pour accentuer le soulèvement */
+    border-color: #c4cdd5;
+    transform: translateY(-8px);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
                 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Grille de la section 3 */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 2rem; /* Plus d'espace */
+    gap: 2rem;
     margin-top: 2rem;
 }
 
-/* Mise en page de la section 4 (Détail projet) */
 .project-detail-layout {
     display: flex;
     flex-wrap: wrap; 
@@ -210,7 +190,6 @@ p {
     min-width: 300px;
 }
 
-/* Design du menu déroulant mis à jour (style "competence menu déroulant" de ta maquette) */
 .custom-select {
     background: var(--card-bg);
     color: var(--text-main);
@@ -222,10 +201,8 @@ p {
     font-weight: 600;
     width: 100%;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Design de la fenêtre de code (On garde le noir pour le contraste) */
 .code-window {
     flex: 1;
     min-width: 300px;
@@ -237,11 +214,10 @@ p {
     color: #e0e6ed;
     font-size: 0.95rem;
     overflow-x: auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Ombre plus forte ici pour le détacher */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-
-/* ===== Window Container ===== */
+/* Window Mockup */
 .window-container {
     width: 400px;
     height: 232px;
@@ -250,7 +226,6 @@ p {
     overflow: hidden;
 }
 
-/* ===== Top Bar ===== */
 .top-bar {
     padding: 6px;
     background-color: black;
@@ -259,52 +234,99 @@ p {
     justify-content: space-between;
 }
 
-.top-bar-name {
-    color:white;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
+.top-bar-name { color: white; font-size: 10px; font-weight: 600; text-transform: uppercase; }
+
+.top-bar-actions { display: flex; gap: 4px; }
+
+.action-one, .action-two, .action-three { width: 8px; height: 8px; border-radius: 50%; }
+.action-one { background-color: #FFFFFF; }
+.action-two { background-color: #54FFCC; }
+.action-three { background-color: #FF51D1; }
+
+/* Details & Menus */
+.tag {
+    background: var(--bg-alt);
+    color: var(--accent);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border: 1px solid var(--border-color);
 }
 
-.top-bar-actions {
+details.skills-dropdown {
+    margin-top: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: #fff;
+    overflow: hidden;
+}
+
+summary {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent);
+    cursor: pointer;
+    list-style: none;
+}
+
+.skills-content {
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+    background-color: #fafbfc;
+    font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Nav & Grid Layouts */
+.project-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    padding: 8px 16px;
+    border-radius: 40px;
+    border: 1px solid var(--border-color);
+    z-index: 1000;
+    display: flex;
+    gap: 12px;
+}
+
+.project-nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 20px;
+}
+
+.project-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.image-placeholder {
+    height: 100%;
+    min-height: 350px;
+    background: #f0f2f5;
+    border: 2px dashed #d1d5db;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    color: #9ca3af;
 }
 
-/* ===== Action Buttons ===== */
-.action-one,
-.action-two,
-.action-three {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #888;
-}
-
-.action-one {
-    background-color: #FFFFFF;
-}
-
-.action-two {
-    background-color: #54FFCC;
-}
-
-.action-three {
-    background-color: #FF51D1;
-}
-
-/* ===== Media Content ===== */
-figure {
-    margin: 0;
-    height: 100%;
-    width: 100%;
-}
-
-img,
-video {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+@media (max-width: 850px) {
+    .project-grid-layout { grid-template-columns: 1fr; }
+    .project-nav { display: none; }
 }

@@ -20,102 +20,303 @@
     <section class="section" id="about">
         <h2>Qui suis-je ?</h2>
         <div class="card about-card">
-            <p class="highlight-text">un Développeur de chez wish</p>
-            <p>[Inserer un texte ici quaand j'aurais de l'inspi]</p>
+            <p class="highlight-text">Un apprenti développeur</p>
+            <p>[Insérer un texte ici quand l'inspiration se fera ressentir]</p>
         </div>
     </section>
 
-    <section class="section" id="projets">
-        <h2>Mes Projets</h2>
+    <section class="section" id="skillsoft">
+        <h2>Mes Compétences</h2>
         <div class="projects-grid">
-            <div class="card"><h3>SUTOM</h3><p>Petit jeu sur console (python)</p></div>
-            <div class="card"><h3>Gestion de Bibliothèque</h3><p>gestion faite sur linux</p></div>
-            <div class="card"><h3>SQL</h3><p>Gestion d'une base de donnée</p></div>
+            <div class="card">
+                <p class="highlight-text">Hard Skills (Savoir-faire)</p>
+                <ul style="list-style: none; color: #4f566b;">
+                    <li><strong>Développement :</strong> Python, SQL, Bash </li>
+                    <li><strong>Systèmes :</strong> Linux / Scripting </li>
+                    <li><strong>Outils :</strong> Git / GitHub </li>
+                    <li><strong>Algorithmique :</strong> Structures de données et logique de programmation.</li>
+                    <li><strong>Versionnage :</strong> Utilisation de Git (GitHub/GitLab) pour le suivi de code.</li>
+                    <li><strong>Environnement :</strong> Installation et configuration de postes (Debian/Linux, VS Code).</li>
+                    <li><strong>Web :</strong> Fondamentaux HTML5 / CSS3.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <p class="highlight-text">Soft Skills (Savoir-être)</p>
+                <ul style="list-style: none; color: #4f566b;">
+                    <li><strong>Analyse :</strong> Évaluation d'algorithmes </li>
+                    <li><strong>Rigueur :</strong> Gestion de bases de données </li>
+                    <li><strong>Esprit d'équipe :</strong> Collaboration en binôme</li>
+                    <li><strong>Curiosité :</strong> Veille technologique et auto-formation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="skillhard">
+        <h2>Mes Compétences</h2>
+        <div class="projects-grid">
+            
+            <div class="card">
+                <p class="highlight-text">Développement</p>
+                <p style="color: #4f566b; font-size: 0.9rem;">Python, SQL, Bash</p>
+                <details class="skills-dropdown">
+                    <summary>En savoir plus</summary>
+                    <div class="skills-content">
+                        <p>Conception d'applications encore en cours d'apprantissage au sein de l'IUT du limousin.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="card">
+                <p class="highlight-text">Systèmes</p>
+                <p style="color: #4f566b; font-size: 0.9rem;">Linux / Scripting</p>
+                <details class="skills-dropdown">
+                    <summary>En savoir plus</summary>
+                    <div class="skills-content">
+                        <p>Maîtrise de l'environnement Linux, manipulation de fichiers et création de scripts Shell pour l'administration système.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="card">
+                <p class="highlight-text">Versionnage</p>
+                <p style="color: #4f566b; font-size: 0.9rem;">Git / GitHub / GitLab</p>
+                <details class="skills-dropdown">
+                    <summary>En savoir plus</summary>
+                    <div class="skills-content">
+                        <p>Suivi de modifications de code, gestion de branches et collaboration sur des dépôts distants (GitHub).</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="card">
+                <p class="highlight-text">Algorithmique</p>
+                <p style="color: #4f566b; font-size: 0.9rem;">Logique & Structures</p>
+                <details class="skills-dropdown">
+                    <summary>En savoir plus</summary>
+                    <div class="skills-content">
+                        <p>Étude de la complexité des tris via observation des couts en temp et en memoires, optimisation des performances.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="card">
+                <p class="highlight-text">Environnement</p>
+                <p style="color: #4f566b; font-size: 0.9rem;">Debian / VS Code</p>
+                <details class="skills-dropdown">
+                    <summary>En savoir plus</summary>
+                    <div class="skills-content">
+                        <p>Installation et configuration complète de postes de travail virtualisés. Pour configurer l'acces au systeme de gestion de la bibliotheque.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="card">
+                <p class="highlight-text">Web</p>
+                <p style="color: #4f566b; font-size: 0.9rem;">HTML5 / CSS3</p>
+                <details class="skills-dropdown">
+                    <summary>En savoir plus</summary>
+                    <div class="skills-content">
+                        <p>Elaboration lors de Td/Tp de site web en cours d'apprantissage au sein de l'IUT du limousin.</p>
+                    </div>
+                </details>
+            </div>
 
         </div>
     </section>
+    
 
-    <section class="section" id="projet-detail">
-        <h2>SUTOM / MOTUS</h2>
-        
-        <div class="project-detail-layout">
+   <nav class="project-nav">
+    <a href="#accueil">Top</a>
+    <a href="#about">À propos</a>
+    <a href="#skillsoft">Skillsoft</a>
 
-            <div class="card">  
-                Languages utilisés : <strong>Python</strong>
-            </div>
-            
-            <div class="card">  
-                <h3>Présentation du projet</h3>
-                <p>Un jeu de mots inspiré du célèbre "Motus". Le but est de deviner un mot en un nombre limité de tentatives.</p>
-            </div>
+    <a href="#sutom">SUTOM</a>
+    <a href="#tris">Tris</a>
+    <a href="#bash">Bibliothèque</a>
+    <a href="#sql">SQL</a>
+    <a href="#besoins">Besoins</a>
+    </nav>
 
-            <div class="project-info">
-
-                
-                <div class="card">
-                    <p>Présentation détaillée du projet. Les défis techniques, les solutions apportées, etc.</p>
+    <section class="section project-full-page" id="sutom">
+        <div class="project-container">
+            <span class="tag">SAÉ 1.01</span>
+            <h1 class="text-gradient">SUTOM / MOTUS</h1>
+            <div class="project-grid-layout">
+                <div class="project-info">
+                    <div class="card">
+                        <h3>Développement Python</h3>
+                        <p>Réalisation d'une application complète du jeu SUTOM. Gestion d'un dictionnaire de mots, typage statique rigoureux et système de scores par niveaux de difficulté.</p>
+                    </div>
+                    <details class="skills-dropdown">
+                        <summary>   Hard Skills (Technique)</summary>
+                        <div class="skills-content">
+                            <ul>
+                                <li><strong>AC 1 & 2 :</strong> Implémentation et élaboration de conceptions simples.</li>
+                                <li><strong>Algorithmique :</strong> Logique de comparaison de chaînes et gestion de dictionnaires.</li>
+                                <li><strong>Tests :</strong> Validation des spécifications via tests unitaires (AC 3).</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="skills-dropdown">
+                        <summary>   Soft Skills (Savoir-être)</summary>
+                        <div class="skills-content">
+                            <p><strong>Rigueur :</strong> Utilisation systématique de préconditions et postconditions. <br> <strong>Travail d'équipe :</strong> Collaboration efficace en binôme.</p>
+                        </div>
+                    </details>
                 </div>
-            </div>
-
-            <div class="window-container">
-                <div class="top-bar">
-                    <span class="top-bar-name">index.html</span>
-                    <div class="top-bar-actions">
-                        <div class="action-one"></div>
-                        <div class="action-two"></div>
-                        <div class="action-three"></div>
+                <div class="project-visual">
+                    <div class="card image-placeholder">
+                        <p>[Capture du jeu SUTOM en terminal]</p>
                     </div>
                 </div>
-                <figure>
-                    <img src="image/Sutom.png" alt="Sutom Game">
-                    <figcaption>Random Image</figcaption>
-                </figure>
             </div>
-            
         </div>
     </section>
-    <section class="section" id="projet-detail">
-        <h2>Gestion de Bibliothèque</h2>
-        
-        <div class="project-detail-layout">
 
-            <div class="card">  
-                Languages utilisés : <strong>Python</strong>
-            </div>
-            
-            <div class="card">  
-                <h3>Présentation du projet</h3>
-                <p>Un jeu de mots inspiré du célèbre "Motus". Le but est de deviner un mot en un nombre limité de tentatives.</p>
-            </div>
-
-            <div class="project-info">
-                <select class="custom-select">
-                    <option>Compétences utilisées</option>
-                    <option>Python</option>
-                    <option>JavaScript</option>
-                    <option>React</option>
-                </select>
-                
-                <div class="card">
-                    <p>Présentation détaillée du projet. Les défis techniques, les solutions apportées, etc.</p>
+    <section class="section project-full-page" id="tris">
+        <div class="project-container">
+            <span class="tag">SAÉ 1.02</span>
+            <h1 class="text-gradient">Benchmark d'Algorithmes</h1>
+            <div class="project-grid-layout">
+                <div class="project-info">
+                    <div class="card">
+                        <h3>Analyse de Performance</h3>
+                        <p>Étude comparative de l'efficacité (temps et mémoire) des tris (Bulle, Insertion, Rapide) pour optimiser le prétraitement de données de Machine Learning.</p>
+                    </div>
+                    <details class="skills-dropdown">
+                        <summary>   Hard Skills (Technique)</summary>
+                        <div class="skills-content">
+                            <ul>
+                                <li><strong>AC 1 & 2 :</strong> Analyse méthodique et comparaison d'approches algorithmiques.</li>
+                                <li><strong>Mathématiques :</strong> Formalisation d'outils de mesure de complexité (AC 3).</li>
+                                <li><strong>Visualisation :</strong> Génération de graphiques de performance.</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="skills-dropdown">
+                        <summary>   Soft Skills</summary>
+                        <div class="skills-content">
+                            <p><strong>Esprit Critique :</strong> Interprétation scientifique des résultats de benchmark. <br> <strong>Synthèse :</strong> Présentation orale des résultats techniques.</p>
+                        </div>
+                    </details>
+                </div>
+                <div class="project-visual">
+                    <div class="card image-placeholder">
+                        <p>[Graphiques : Temps de calcul / Taille de données]</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="code-window">
-<pre><code>const stripeDevVibe = {
-  theme: 'dark',
-  clean: true,
-  fast: true
-};
-
-function buildPortfolio() {
-  return "Design validé !";
-}
-</code></pre>
-            </div>
-            
         </div>
     </section>
+
+    <section class="section project-full-page" id="bash">
+        <div class="project-container">
+            <span class="tag">SAÉ 1.03</span>
+            <h1 class="text-gradient">Système & Scripting</h1>
+            <div class="project-grid-layout">
+                <div class="project-info">
+                    <div class="card">
+                        <h3>Infrastructure & Automation</h3>
+                        <p>Installation de Debian virtualisée et développement d'un système Shell de gestion de bibliothèque (scripts d'inscription, d'emprunt et de rappel automatique).</p>
+                    </div>
+                    <details class="skills-dropdown">
+                        <summary>   Hard Skills (Technique)</summary>
+                        <div class="skills-content">
+                            <ul>
+                                <li><strong>Système :</strong> Virtualisation (VirtualBox), partitionnement Swap, gestion multi-utilisateurs.</li>
+                                <li><strong>Shell :</strong> Scripting Bash avancé (SED, GREP, AWK, Date).</li>
+                                <li><strong>Sécurité :</strong> Configuration rigoureuse des droits (chmod/chown).</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="skills-dropdown">
+                        <summary>   Soft Skills</summary>
+                        <div class="skills-content">
+                            <p><strong>Méthodologie :</strong> Respect des procédures d'installation. <br> <strong>Sécurité :</strong> Vigilance sur les accès et la confidentialité.</p>
+                        </div>
+                    </details>
+                </div>
+                <div class="project-visual">
+                    <div class="card image-placeholder">
+                        <p>[Capture : Terminal Linux DebSAé1.03]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section project-full-page" id="sql">
+        <div class="project-container">
+            <span class="tag">SAÉ 1.04</span>
+            <h1 class="text-gradient">Base de Données</h1>
+            <div class="project-grid-layout">
+                <div class="project-info">
+                    <div class="card">
+                        <h3>Conception & Requêtage</h3>
+                        <p>Mise en place d'une BDD relationnelle sur les ventes de jeux vidéo. Analyse de l'existant et production de graphiques via SQLPad.</p>
+                    </div>
+                    <details class="skills-dropdown">
+                        <summary>   Hard Skills (Technique)</summary>
+                        <div class="skills-content">
+                            <ul>
+                                <li><strong>AC 1 :</strong> Interrogation de BDD via requêtes complexes (Jointures, Agrégats).</li>
+                                <li><strong>AC 3 :</strong> Modélisation (MCD/MLD) à partir d'un cahier des charges client.</li>
+                                <li><strong>Visualisation :</strong> Publication de graphiques analytiques.</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="skills-dropdown">
+                        <summary>   Soft Skills</summary>
+                        <div class="skills-content">
+                            <p><strong>Analyse :</strong> Capacité à proposer des extensions à un modèle existant. <br> <strong>Rigueur :</strong> Cohérence des données relationnelles.</p>
+                        </div>
+                    </details>
+                </div>
+                <div class="project-visual">
+                    <div class="card image-placeholder">
+                        <p>[Image : Schéma Relationnel / Graphique SQLPad]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section project-full-page" id="besoins">
+        <div class="project-container">
+            <span class="tag">SAÉ 1.03 bis</span>
+            <h1 class="text-gradient">Recueil des Besoins</h1>
+            <div class="project-grid-layout">
+                <div class="project-info">
+                    <div class="card">
+                        <h3>Analyse SI</h3>
+                        <p>Définition des besoins pour une application Web de gestion des prêts. Identification des fonctionnalités et priorisation selon la méthode MoSCoW.</p>
+                    </div>
+                    <details class="skills-dropdown">
+                        <summary>   Hard Skills (Technique)</summary>
+                        <div class="skills-content">
+                            <ul>
+                                <li><strong>Méthodologie :</strong> Tableau MoSCoW (Must, Should, Could, Won't).</li>
+                                <li><strong>Analyse :</strong> Distinction besoins fonctionnels et non-fonctionnels.</li>
+                                <li><strong>Gestion de Projet :</strong> Lien entre besoins, objectifs et exigences mesurables.</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="skills-dropdown">
+                        <summary>   Soft Skills</summary>
+                        <div class="skills-content">
+                            <p><strong>Empathie :</strong> Analyse du point de vue utilisateur. <br> <strong>Communication :</strong> Rédaction de documentation technique claire.</p>
+                        </div>
+                    </details>
+                </div>
+                <div class="project-visual">
+                    <div class="card image-placeholder">
+                        <p>[Tableau : Synthèse MoSCoW]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 <script src="script.js"></script>
 </body>
 </html>
